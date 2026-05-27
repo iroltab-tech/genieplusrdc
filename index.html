@@ -1,128 +1,139 @@
+body{margin:0;font-family:Arial;background:#fff;color:#111}
+header{background:linear-gradient(90deg,#ff7a00,#ff3c00);color:#fff;text-align:center;padding:25px}
+nav{background:#111;display:flex;justify-content:center;flex-wrap:wrap;padding:10px}
+nav a{color:#fff;margin:10px;text-decoration:none;font-weight:bold}
+.hero{text-align:center;padding:90px 20px;background:#f5f5f5}
+.hero h1{color:#ff7a00;font-size:42px}
+.section{padding:50px 20px;max-width:1100px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.card{border:1px solid #ddd;padding:15px;border-radius:10px;transition:.3s}
+.card:hover{transform:scale(1.03)}
+.btn{background:#ff7a00;color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none}
+footer{background:#111;color:#fff;text-align:center;padding:20px}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:12px;border-radius:50px;text-decoration:none}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GÉNIE+ RDC</title>
-<style>
-body{
-font-family:Arial,sans-serif;
-margin:0;
-padding:0;
-background:#f5f5f5;
-color:#222;
-}
-header{
-background:#000;
-color:#fff;
-padding:20px;
-text-align:center;
-}
-header h1{
-color:orange;
-margin:0;
-}
-.hero{
-padding:80px 20px;
-text-align:center;
-background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop') center/cover;
-color:white;
-}
-.btn{
-display:inline-block;
-padding:12px 25px;
-background:orange;
-color:black;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
-section{
-padding:60px 20px;
-max-width:1100px;
-margin:auto;
-}
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-.card{
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 4px 10px rgba(0,0,0,.1);
-}
-footer{
-background:black;
-color:white;
-text-align:center;
-padding:20px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
 <h1>GÉNIE+ RDC</h1>
-<p>Construction • Génie Civil • Matériaux de Construction</p>
+<p>Ingénierie • Construction • Infrastructure</p>
 </header>
 
+<nav>
+<a href="index.html">Accueil</a>
+<a href="services.html">Services</a>
+<a href="projets.html">Projets</a>
+<a href="blog.html">Blog</a>
+<a href="contact.html">Contact</a>
+</nav>
+
 <section class="hero">
-<h2>Construire l’avenir avec expertise et innovation</h2>
-<p>Entreprise moderne de construction et génie civil en RDC.</p>
-<br>
-<a href="#contact" class="btn">Demander un devis</a>
+<h1>Construire le futur de l’Afrique</h1>
+<p>Bureau d’ingénierie & construction de niveau international</p>
+<a class="btn" href="contact.html">Demander un devis</a>
 </section>
 
-<section>
-<h2>À propos</h2>
-<p>
-GÉNIE+ RDC est une entreprise spécialisée dans la construction,
-le génie civil, les ouvrages communautaires et la fourniture
-de matériaux de construction en République Démocratique du Congo.
-</p>
+<section class="section">
+<h2>Expertise</h2>
+<div class="grid">
+<div class="card">🏗️ Bâtiments</div>
+<div class="card">🌉 Infrastructures</div>
+<div class="card">📐 Études techniques</div>
+<div class="card">🧠 Gestion de projet</div>
+</div>
 </section>
+<a class="whatsapp" href="https://wa.me/243852677025">WhatsApp</a>
 
-<section>
-<h2>Nos Services</h2>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Services</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<div class="services">
+<header><h1>Services</h1></header>
+<nav><a href="index.html">Accueil</a></nav>
 
-<div class="card">
-<h3>Construction</h3>
-<p>Maisons, immeubles, écoles et infrastructures modernes.</p>
-</div>
-
-<div class="card">
-<h3>Études Techniques</h3>
-<p>Plans, devis, calculs structurels et supervision.</p>
-</div>
-
-<div class="card">
-<h3>Génie Civil</h3>
-<p>Routes, ponts, dalots et ouvrages en béton armé.</p>
-</div>
-
-<div class="card">
-<h3>Matériaux</h3>
-<p>Ciment, fers à béton, plomberie, peinture et électricité.</p>
-</div>
-
+<section class="section">
+<div class="grid">
+<div class="card">🏗️ Construction</div>
+<div class="card">🌉 Infrastructures</div>
+<div class="card">📐 Études techniques</div>
+<div class="card">🧠 Management projet</div>
 </div>
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
-<p>Email : contact@genieplusrdc.com</p>
-<p>Téléphone : +243 XXX XXX XXX</p>
-<p>Adresse : Bukavu, RDC</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Projets</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Projets</h1></header>
+<nav><a href="index.html">Accueil</a></nav>
+
+<section class="section">
+<div class="grid">
+<div class="card">🏢 Immeuble R+5</div>
+<div class="card">🌉 Pont métallique</div>
+<div class="card">🏗️ Route nationale</div>
+<div class="card">💧 Projet hydraulique</div>
+</div>
 </section>
 
-<footer>
-<p>© 2026 GÉNIE+ RDC - Tous droits réservés.</p>
-</footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Actualités</h1></header>
+<nav><a href="index.html">Accueil</a></nav>
+
+<section class="section">
+<div class="card">📢 Nouveau chantier lancé</div>
+<div class="card">📢 Études techniques en cours</div>
+<div class="card">📢 Expansion GÉNIE+ RDC</div>
+</section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Contact</h1></header>
+<nav><a href="index.html">Accueil</a></nav>
+
+<section class="section">
+<p>📍 RDC (Bukavu / Kinshasa)</p>
+<p>📞 +243 852 677 025</p>
+<p>📧 iroltab@gmail.com</p>
+
+<a class="btn" href="https://wa.me/243852677025">WhatsApp Direct</a>
+</section>
 
 </body>
 </html>
