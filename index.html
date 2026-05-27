@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GÉNIE+ RDC</title>
+<title>GÉNIE+ RDC | Elite Construction</title>
 
 <style>
-/* =======================
-   RESET & BASE
-======================= */
+/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+  font-family:Arial, sans-serif;
 }
 
 html{
@@ -20,24 +19,20 @@ html{
 }
 
 body{
-  font-family: Arial, sans-serif;
   background:#fff;
   color:#111;
-  line-height:1.6;
 }
 
-/* =======================
-   HEADER
-======================= */
+/* ================= HEADER ================= */
 header{
   background:linear-gradient(90deg,#ff7a00,#ff3c00);
   color:#fff;
   text-align:center;
-  padding:35px 20px;
+  padding:40px 20px;
 }
 
 header h1{
-  font-size:34px;
+  font-size:38px;
   letter-spacing:1px;
 }
 
@@ -45,9 +40,7 @@ header p{
   opacity:0.9;
 }
 
-/* =======================
-   NAV
-======================= */
+/* ================= NAV ================= */
 nav{
   background:#111;
   display:flex;
@@ -57,12 +50,11 @@ nav{
   position:sticky;
   top:0;
   z-index:1000;
-  box-shadow:0 3px 10px rgba(0,0,0,0.2);
 }
 
 nav a{
   color:#fff;
-  margin:8px 15px;
+  margin:10px 15px;
   text-decoration:none;
   font-weight:bold;
   transition:0.3s;
@@ -72,79 +64,33 @@ nav a:hover{
   color:#ff7a00;
 }
 
-/* =======================
-   HERO
-======================= */
+/* ================= HERO ================= */
 .hero{
   text-align:center;
-  padding:110px 20px;
+  padding:120px 20px;
   background:#f5f5f5;
 }
 
 .hero h1{
+  font-size:48px;
   color:#ff7a00;
-  font-size:44px;
-  margin-bottom:10px;
 }
 
 .hero p{
-  color:#444;
   font-size:18px;
+  margin-top:10px;
+  color:#444;
 }
 
-/* =======================
-   SECTIONS
-======================= */
-.section{
-  padding:60px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section h2{
-  text-align:center;
-  margin-bottom:30px;
-  font-size:28px;
-}
-
-/* =======================
-   GRID
-======================= */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-/* =======================
-   CARDS
-======================= */
-.card{
-  border:1px solid #eee;
-  padding:20px;
-  border-radius:12px;
-  background:#fff;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
-  transition:0.3s ease;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
-/* =======================
-   BUTTON
-======================= */
 .btn{
   display:inline-block;
+  margin-top:20px;
   background:#ff7a00;
   color:#fff;
-  padding:12px 20px;
+  padding:14px 22px;
   border-radius:8px;
   text-decoration:none;
   font-weight:bold;
-  margin-top:15px;
   transition:0.3s;
 }
 
@@ -153,9 +99,92 @@ nav a:hover{
   transform:scale(1.05);
 }
 
-/* =======================
-   FOOTER
-======================= */
+/* ================= SECTIONS ================= */
+.section{
+  padding:70px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:30px;
+}
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* ================= CARDS ================= */
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  transition:0.4s;
+  opacity:0;
+  transform:translateY(30px);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+/* ================= COUNTERS ================= */
+.counters{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  text-align:center;
+}
+
+.counter-box{
+  background:#111;
+  color:#fff;
+  padding:30px;
+  border-radius:12px;
+}
+
+.counter-box h3{
+  font-size:40px;
+  color:#ff7a00;
+}
+
+/* ================= CONTACT ================= */
+form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:500px;
+  margin:auto;
+}
+
+input, textarea{
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+button{
+  background:#ff7a00;
+  color:#fff;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* ================= FOOTER ================= */
 footer{
   background:#111;
   color:#fff;
@@ -164,9 +193,7 @@ footer{
   margin-top:40px;
 }
 
-/* =======================
-   WHATSAPP BUTTON
-======================= */
+/* ================= WHATSAPP ================= */
 .whatsapp{
   position:fixed;
   bottom:25px;
@@ -177,12 +204,6 @@ footer{
   border-radius:50px;
   text-decoration:none;
   font-weight:bold;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  transition:0.3s;
-}
-
-.whatsapp:hover{
-  transform:scale(1.1);
 }
 </style>
 
@@ -192,23 +213,23 @@ footer{
 
 <header>
   <h1>GÉNIE+ RDC</h1>
-  <p>Construction • Matériaux • Ingénierie</p>
+  <p>Construction • Ingénierie • Innovation</p>
 </header>
 
 <nav>
-  <a href="#">Accueil</a>
-  <a href="#">Services</a>
-  <a href="#">Projets</a>
-  <a href="#">Contact</a>
+  <a href="#accueil">Accueil</a>
+  <a href="#services">Services</a>
+  <a href="#stats">Chiffres</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<section class="hero">
-  <h1>Construire l’avenir en RDC</h1>
-  <p>Solutions modernes en construction et ingénierie</p>
-  <a href="#" class="btn">Découvrir</a>
+<section class="hero" id="accueil">
+  <h1>Bâtir l’avenir en Afrique</h1>
+  <p>Solutions modernes de construction et ingénierie</p>
+  <a class="btn" href="#services">Découvrir</a>
 </section>
 
-<section class="section">
+<section class="section" id="services">
   <h2>Nos Services</h2>
 
   <div class="grid">
@@ -220,7 +241,7 @@ footer{
 
     <div class="card">
       <h3>Matériaux</h3>
-      <p>Vente de ciment, fers, peinture et plomberie.</p>
+      <p>Fourniture complète de matériaux de construction.</p>
     </div>
 
     <div class="card">
@@ -231,13 +252,84 @@ footer{
   </div>
 </section>
 
+<section class="section" id="stats">
+  <h2>Nos Réalisations</h2>
+
+  <div class="counters">
+
+    <div class="counter-box">
+      <h3 class="counter" data-target="120">0</h3>
+      <p>Projets</p>
+    </div>
+
+    <div class="counter-box">
+      <h3 class="counter" data-target="85">0</h3>
+      <p>Clients</p>
+    </div>
+
+    <div class="counter-box">
+      <h3 class="counter" data-target="15">0</h3>
+      <p>Années</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <h2>Contactez-nous</h2>
+
+  <form>
+    <input type="text" placeholder="Votre nom" required>
+    <input type="email" placeholder="Votre email" required>
+    <textarea rows="5" placeholder="Votre message"></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
+
 <footer>
-  © 2026 GÉNIE+ RDC - Tous droits réservés
+  © 2026 GÉNIE+ RDC - Niveau Élite
 </footer>
 
 <a class="whatsapp" href="https://wa.me/243852677025" target="_blank">
   WhatsApp
 </a>
+
+<script>
+// ===== ANIMATION APPARITION =====
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      card.classList.add('show');
+    }
+  });
+});
+
+// ===== COMPTEURS =====
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+  counter.innerText = "0";
+
+  const updateCounter = () => {
+    const target = +counter.getAttribute('data-target');
+    const current = +counter.innerText;
+
+    const increment = target / 100;
+
+    if(current < target){
+      counter.innerText = Math.ceil(current + increment);
+      setTimeout(updateCounter, 30);
+    } else {
+      counter.innerText = target;
+    }
+  };
+
+  updateCounter();
+});
+</script>
 
 </body>
 </html>
