@@ -3,208 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GÉNIE+ RDC | Elite Construction</title>
+<title>GÉNIE+ RDC | Construction & Ingénierie</title>
 
 <style>
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#fff;
-  color:#111;
-}
-
-/* ================= HEADER ================= */
-header{
-  background:linear-gradient(90deg,#ff7a00,#ff3c00);
-  color:#fff;
-  text-align:center;
-  padding:40px 20px;
-}
-
-header h1{
-  font-size:38px;
-  letter-spacing:1px;
-}
-
-header p{
-  opacity:0.9;
-}
-
-/* ================= NAV ================= */
-nav{
-  background:#111;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding:12px;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-nav a{
-  color:#fff;
-  margin:10px 15px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-nav a:hover{
-  color:#ff7a00;
-}
-
-/* ================= HERO ================= */
-.hero{
-  text-align:center;
-  padding:120px 20px;
-  background:#f5f5f5;
-}
-
-.hero h1{
-  font-size:48px;
-  color:#ff7a00;
-}
-
-.hero p{
-  font-size:18px;
-  margin-top:10px;
-  color:#444;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  background:#ff7a00;
-  color:#fff;
-  padding:14px 22px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#e86500;
-  transform:scale(1.05);
-}
-
-/* ================= SECTIONS ================= */
-.section{
-  padding:70px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section h2{
-  text-align:center;
-  margin-bottom:40px;
-  font-size:30px;
-}
-
-/* ================= GRID ================= */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-/* ================= CARDS ================= */
-.card{
-  background:#fff;
-  border-radius:12px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
-  transition:0.4s;
-  opacity:0;
-  transform:translateY(30px);
-}
-
-.card.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-/* ================= COUNTERS ================= */
-.counters{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  text-align:center;
-}
-
-.counter-box{
-  background:#111;
-  color:#fff;
-  padding:30px;
-  border-radius:12px;
-}
-
-.counter-box h3{
-  font-size:40px;
-  color:#ff7a00;
-}
-
-/* ================= CONTACT ================= */
-form{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  max-width:500px;
-  margin:auto;
-}
-
-input, textarea{
-  padding:12px;
-  border:1px solid #ddd;
-  border-radius:8px;
-}
-
-button{
-  background:#ff7a00;
-  color:#fff;
-  padding:12px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-/* ================= FOOTER ================= */
-footer{
-  background:#111;
-  color:#fff;
-  text-align:center;
-  padding:25px;
-  margin-top:40px;
-}
-
-/* ================= WHATSAPP ================= */
-.whatsapp{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 16px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:bold;
-}
+body{margin:0;font-family:Arial;background:#fff;color:#111;line-height:1.6}
+header{background:linear-gradient(90deg,#ff7a00,#ff3c00);color:#fff;text-align:center;padding:40px}
+nav{background:#111;display:flex;justify-content:center;flex-wrap:wrap;padding:12px;position:sticky;top:0}
+nav a{color:#fff;margin:10px;text-decoration:none;font-weight:bold}
+.hero{text-align:center;padding:100px 20px;background:#f5f5f5}
+.hero h1{color:#ff7a00;font-size:44px}
+.section{padding:60px 20px;max-width:1100px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{padding:20px;border:1px solid #ddd;border-radius:10px;background:#fff}
+.btn{display:inline-block;background:#ff7a00;color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none}
+footer{background:#111;color:#fff;text-align:center;padding:25px;margin-top:40px}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:14px;border-radius:50px;text-decoration:none}
 </style>
 
 </head>
@@ -213,20 +26,33 @@ footer{
 
 <header>
   <h1>GÉNIE+ RDC</h1>
-  <p>Construction • Ingénierie • Innovation</p>
+  <p>Entreprise de Construction • Ingénierie • Matériaux</p>
 </header>
 
 <nav>
   <a href="#accueil">Accueil</a>
+  <a href="#apropos">À propos</a>
   <a href="#services">Services</a>
-  <a href="#stats">Chiffres</a>
+  <a href="#projets">Projets</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <section class="hero" id="accueil">
-  <h1>Bâtir l’avenir en Afrique</h1>
-  <p>Solutions modernes de construction et ingénierie</p>
-  <a class="btn" href="#services">Découvrir</a>
+  <h1>Bâtir un avenir solide en RDC</h1>
+  <p>Nous réalisons des projets de construction durables, modernes et économiques pour particuliers, entreprises et institutions.</p>
+  <a class="btn" href="#contact">Demander un devis</a>
+</section>
+
+<section class="section" id="apropos">
+  <h2>À propos de nous</h2>
+  <p>
+    <b>GÉNIE+ RDC</b> est une entreprise spécialisée dans la construction, le suivi des chantiers, 
+    la fourniture de matériaux et les études techniques.
+  </p>
+  <p>
+    Nous intervenons dans la conception, la réalisation et la supervision de projets de bâtiments résidentiels,
+    commerciaux et infrastructures en République Démocratique du Congo.
+  </p>
 </section>
 
 <section class="section" id="services">
@@ -235,41 +61,46 @@ footer{
   <div class="grid">
 
     <div class="card">
-      <h3>BTP</h3>
-      <p>Construction de bâtiments modernes et durables.</p>
+      <h3>Construction BTP</h3>
+      <p>Maisons, immeubles, écoles, bureaux et infrastructures modernes.</p>
     </div>
 
     <div class="card">
-      <h3>Matériaux</h3>
-      <p>Fourniture complète de matériaux de construction.</p>
+      <h3>Études Techniques</h3>
+      <p>Plans architecturaux, calculs structurels et conception complète.</p>
     </div>
 
     <div class="card">
-      <h3>Études</h3>
-      <p>Plans architecturaux et calculs structurels.</p>
+      <h3>Matériaux de Construction</h3>
+      <p>Ciment, fers à béton, peinture, plomberie et électricité bâtiment.</p>
+    </div>
+
+    <div class="card">
+      <h3>Suivi de Chantier</h3>
+      <p>Supervision technique pour garantir qualité et durabilité des ouvrages.</p>
     </div>
 
   </div>
 </section>
 
-<section class="section" id="stats">
+<section class="section" id="projets">
   <h2>Nos Réalisations</h2>
 
-  <div class="counters">
+  <div class="grid">
 
-    <div class="counter-box">
-      <h3 class="counter" data-target="120">0</h3>
-      <p>Projets</p>
+    <div class="card">
+      <h3>Maison moderne</h3>
+      <p>Construction d’une maison familiale à Bukavu.</p>
     </div>
 
-    <div class="counter-box">
-      <h3 class="counter" data-target="85">0</h3>
-      <p>Clients</p>
+    <div class="card">
+      <h3>Bâtiment R+2</h3>
+      <p>Projet résidentiel en cours de réalisation.</p>
     </div>
 
-    <div class="counter-box">
-      <h3 class="counter" data-target="15">0</h3>
-      <p>Années</p>
+    <div class="card">
+      <h3>Fourniture matériaux</h3>
+      <p>Distribution de matériaux sur plusieurs chantiers.</p>
     </div>
 
   </div>
@@ -278,58 +109,20 @@ footer{
 <section class="section" id="contact">
   <h2>Contactez-nous</h2>
 
-  <form>
-    <input type="text" placeholder="Votre nom" required>
-    <input type="email" placeholder="Votre email" required>
-    <textarea rows="5" placeholder="Votre message"></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
+  <p><b>Téléphone :</b> +243 852 677 025</p>
+  <p><b>Email :</b> iroltab@gmail.com</p>
+  <p><b>Localisation :</b> République Démocratique du Congo</p>
+
+  <br>
+
+  <a class="btn" href="https://wa.me/243852677025">Envoyer un message WhatsApp</a>
 </section>
 
 <footer>
-  © 2026 GÉNIE+ RDC - Niveau Élite
+  © 2026 GÉNIE+ RDC - Tous droits réservés
 </footer>
 
-<a class="whatsapp" href="https://wa.me/243852677025" target="_blank">
-  WhatsApp
-</a>
-
-<script>
-// ===== ANIMATION APPARITION =====
-const cards = document.querySelectorAll('.card');
-
-window.addEventListener('scroll', () => {
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      card.classList.add('show');
-    }
-  });
-});
-
-// ===== COMPTEURS =====
-const counters = document.querySelectorAll('.counter');
-
-counters.forEach(counter => {
-  counter.innerText = "0";
-
-  const updateCounter = () => {
-    const target = +counter.getAttribute('data-target');
-    const current = +counter.innerText;
-
-    const increment = target / 100;
-
-    if(current < target){
-      counter.innerText = Math.ceil(current + increment);
-      setTimeout(updateCounter, 30);
-    } else {
-      counter.innerText = target;
-    }
-  };
-
-  updateCounter();
-});
-</script>
+<a class="whatsapp" href="https://wa.me/243852677025" target="_blank">WhatsApp</a>
 
 </body>
 </html>
