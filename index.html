@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Site Pro</title>
+
+<style>
 /* ===== BASE ===== */
 *{
   margin:0;
@@ -6,7 +14,7 @@
 }
 
 body{
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
   background:#fff;
   color:#111;
   line-height:1.6;
@@ -18,15 +26,13 @@ header{
   color:#fff;
   text-align:center;
   padding:30px 20px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.15);
 }
 
 header h1{
   font-size:32px;
-  letter-spacing:1px;
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAV ===== */
 nav{
   background:#111;
   display:flex;
@@ -35,7 +41,6 @@ nav{
   padding:12px;
   position:sticky;
   top:0;
-  z-index:1000;
 }
 
 nav a{
@@ -43,81 +48,49 @@ nav a{
   margin:8px 15px;
   text-decoration:none;
   font-weight:bold;
-  transition:0.3s;
-  position:relative;
 }
 
 nav a:hover{
   color:#ff7a00;
 }
 
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  width:0%;
-  height:2px;
-  background:#ff7a00;
-  transition:0.3s;
-}
-
-nav a:hover::after{
-  width:100%;
-}
-
 /* ===== HERO ===== */
 .hero{
   text-align:center;
-  padding:110px 20px;
-  background:linear-gradient(to bottom,#f5f5f5,#ffffff);
+  padding:90px 20px;
+  background:#f5f5f5;
 }
 
 .hero h1{
   color:#ff7a00;
-  font-size:46px;
-  margin-bottom:10px;
+  font-size:42px;
 }
 
-.hero p{
-  font-size:18px;
-  color:#444;
-}
-
-/* ===== SECTIONS ===== */
+/* ===== SECTION ===== */
 .section{
-  padding:60px 20px;
+  padding:50px 20px;
   max-width:1100px;
   margin:auto;
-}
-
-.section h2{
-  text-align:center;
-  margin-bottom:30px;
-  font-size:28px;
-  color:#111;
 }
 
 /* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
 }
 
 /* ===== CARD ===== */
 .card{
-  border:1px solid #eee;
-  padding:20px;
-  border-radius:12px;
+  border:1px solid #ddd;
+  padding:15px;
+  border-radius:10px;
+  transition:.3s;
   background:#fff;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
-  transition:0.3s ease;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  transform:scale(1.03);
 }
 
 /* ===== BUTTON ===== */
@@ -125,16 +98,10 @@ nav a:hover::after{
   display:inline-block;
   background:#ff7a00;
   color:#fff;
-  padding:12px 20px;
-  border-radius:8px;
+  padding:12px 18px;
+  border-radius:6px;
   text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#e65c00;
-  transform:scale(1.05);
+  margin-top:10px;
 }
 
 /* ===== FOOTER ===== */
@@ -142,28 +109,78 @@ footer{
   background:#111;
   color:#fff;
   text-align:center;
-  padding:25px;
-  margin-top:40px;
+  padding:20px;
 }
 
-/* ===== WHATSAPP FLOAT ===== */
+/* ===== WHATSAPP ===== */
 .whatsapp{
   position:fixed;
-  bottom:25px;
-  right:25px;
+  bottom:20px;
+  right:20px;
   background:#25D366;
   color:#fff;
-  padding:14px 16px;
+  padding:12px 16px;
   border-radius:50px;
   text-decoration:none;
   font-weight:bold;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  transition:0.3s;
 }
+</style>
 
-.whatsapp:hover{
-  transform:scale(1.1);
-}
+</head>
+
+<body>
+
+<header>
+  <h1>GÉNIE+ RDC</h1>
+  <p>Construction • Matériaux • Ingénierie</p>
+</header>
+
+<nav>
+  <a href="#">Accueil</a>
+  <a href="#">Services</a>
+  <a href="#">Projets</a>
+  <a href="#">Contact</a>
+</nav>
+
+<section class="hero">
+  <h1>Construire l’avenir en RDC</h1>
+  <p>Solutions modernes en construction et ingénierie</p>
+  <a href="#" class="btn">Découvrir</a>
+</section>
+
+<section class="section">
+  <h2>Nos Services</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>BTP</h3>
+      <p>Construction de bâtiments modernes et durables.</p>
+    </div>
+
+    <div class="card">
+      <h3>Matériaux</h3>
+      <p>Vente de ciment, fers, peinture et plomberie.</p>
+    </div>
+
+    <div class="card">
+      <h3>Études</h3>
+      <p>Plans architecturaux et calculs structurels.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 GÉNIE+ RDC - Tous droits réservés
+</footer>
+
+<a class="whatsapp" href="https://wa.me/243852677025" target="_blank">
+  WhatsApp
+</a>
+
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
