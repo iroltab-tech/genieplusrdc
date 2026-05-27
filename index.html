@@ -3,41 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GÉNIE+ RDC | Dashboard</title>
+<title>GÉNIE+ RDC | Admin Secure</title>
 
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <style>
-body{margin:0;font-family:Arial;background:#f4f4f4;color:#111}
+body{margin:0;font-family:Arial;background:#f4f4f4}
+header{background:#ff6a00;color:#fff;text-align:center;padding:25px}
 
-/* HEADER */
-header{
-  background:linear-gradient(90deg,#ff6a00,#ff2d00);
-  color:#fff;
-  text-align:center;
-  padding:25px;
-}
+.container{max-width:900px;margin:auto;padding:20px}
 
-/* LAYOUT */
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:20px;
-}
+.card{background:#fff;padding:15px;margin:10px 0;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
 
-/* CARD */
-.card{
-  background:#fff;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-}
-
-/* INPUTS */
 input,textarea{
   width:100%;
   padding:10px;
@@ -46,37 +26,21 @@ input,textarea{
   border-radius:8px;
 }
 
-/* BUTTON */
 button{
   background:#ff6a00;
   color:#fff;
-  padding:10px 15px;
+  padding:10px;
   border:none;
   border-radius:8px;
   cursor:pointer;
 }
 
-/* NAV */
-.top{
+.hidden{display:none}
+
+.topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
-}
-
-/* HIDE */
-.hidden{display:none}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px;
-  border-radius:50px;
-  text-decoration:none;
 }
 </style>
 </head>
@@ -85,12 +49,12 @@ button{
 
 <header>
   <h1>GÉNIE+ RDC</h1>
-  <p>Dashboard Administrateur</p>
+  <p>Dashboard Administrateur Sécurisé</p>
 </header>
 
 <div class="container">
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 <div id="loginBox" class="card">
   <h2>Connexion Admin</h2>
   <input id="email" placeholder="Email">
@@ -98,65 +62,76 @@ button{
   <button onclick="login()">Se connecter</button>
 </div>
 
-<!-- ================= ADMIN PANEL ================= -->
-<div id="adminPanel" class="hidden">
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
 
-  <div class="top">
-    <h2>Dashboard Projets</h2>
+  <div class="topbar">
+    <h2>Admin Panel</h2>
     <button onclick="logout()">Déconnexion</button>
   </div>
 
   <div class="card">
     <h3>Ajouter un projet</h3>
-    <input id="title" placeholder="Titre du projet">
+    <input id="title" placeholder="Titre">
     <textarea id="desc" placeholder="Description"></textarea>
     <button onclick="addProject()">Publier</button>
   </div>
 
   <div class="card">
     <h3>Projets publiés</h3>
-    <div id="projects"></div>
+    <div id="list"></div>
   </div>
 
 </div>
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/243852677025" target="_blank">WhatsApp</a>
-
 <script>
 
 /* ================= FIREBASE CONFIG ================= */
 const firebaseConfig = {
-  apiKey: "XXXX",
-  authDomain: "XXXX",
-  projectId: "XXXX"
+  apiKey: "TON_API_KEY",
+  authDomain: "TON_PROJECT.firebaseapp.com",
+  projectId: "TON_PROJECT_ID"
 };
 
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
 const auth = firebase.auth();
+const db = firebase.firestore();
 
 /* ================= LOGIN ================= */
 function login(){
-  auth.signInWithEmailAndPassword(
-    email.value,
-    password.value
-  )
-  .then(()=>{
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("adminPanel").classList.remove("hidden");
-    loadProjects();
+  auth.signInWithEmailAndPassword(email.value, password.value)
+  .then(user=>{
+    showDashboard();
   })
-  .catch(err=>alert(err.message));
+  .catch(err=>{
+    alert("Erreur : " + err.message);
+  });
 }
 
 /* ================= LOGOUT ================= */
 function logout(){
-  auth.signOut();
-  location.reload();
+  auth.signOut().then(()=>location.reload());
 }
+
+/* ================= SHOW DASHBOARD ================= */
+function showDashboard(){
+  loginBox.classList.add("hidden");
+  dashboard.classList.remove("hidden");
+  loadProjects();
+}
+
+/* ================= AUTO LOGIN ================= */
+auth.onAuthStateChanged(user=>{
+  if(user){
+    showDashboard();
+  }else{
+    loginBox.classList.remove("hidden");
+    dashboard.classList.add("hidden");
+  }
+});
 
 /* ================= ADD PROJECT ================= */
 function addProject(){
@@ -177,13 +152,13 @@ function loadProjects(){
     snapshot.forEach(doc=>{
       html+=`
         <div class="card">
-          <h3>${doc.data().title}</h3>
+          <h4>${doc.data().title}</h4>
           <p>${doc.data().description}</p>
           <button onclick="deleteProject('${doc.id}')">Supprimer</button>
         </div>
       `;
     });
-    document.getElementById("projects").innerHTML=html;
+    list.innerHTML = html;
   });
 }
 
@@ -191,15 +166,6 @@ function loadProjects(){
 function deleteProject(id){
   db.collection("projets").doc(id).delete();
 }
-
-/* ================= AUTO CHECK LOGIN ================= */
-auth.onAuthStateChanged(user=>{
-  if(user){
-    loginBox.classList.add("hidden");
-    adminPanel.classList.remove("hidden");
-    loadProjects();
-  }
-});
 
 </script>
 
