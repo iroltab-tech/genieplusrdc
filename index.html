@@ -3,126 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GÉNIE+ RDC | Construction & Ingénierie</title>
+<title>GÉNIE+ RDC | Dashboard</title>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <style>
-body{margin:0;font-family:Arial;background:#fff;color:#111;line-height:1.6}
-header{background:linear-gradient(90deg,#ff7a00,#ff3c00);color:#fff;text-align:center;padding:40px}
-nav{background:#111;display:flex;justify-content:center;flex-wrap:wrap;padding:12px;position:sticky;top:0}
-nav a{color:#fff;margin:10px;text-decoration:none;font-weight:bold}
-.hero{text-align:center;padding:100px 20px;background:#f5f5f5}
-.hero h1{color:#ff7a00;font-size:44px}
-.section{padding:60px 20px;max-width:1100px;margin:auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{padding:20px;border:1px solid #ddd;border-radius:10px;background:#fff}
-.btn{display:inline-block;background:#ff7a00;color:#fff;padding:12px 18px;border-radius:6px;text-decoration:none}
-footer{background:#111;color:#fff;text-align:center;padding:25px;margin-top:40px}
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:14px;border-radius:50px;text-decoration:none}
-</style>
+body{margin:0;font-family:Arial;background:#f4f4f4;color:#111}
 
+/* HEADER */
+header{
+  background:linear-gradient(90deg,#ff6a00,#ff2d00);
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+
+/* LAYOUT */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  padding:15px;
+  margin:10px 0;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* INPUTS */
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+/* BUTTON */
+button{
+  background:#ff6a00;
+  color:#fff;
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* NAV */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* HIDE */
+.hidden{display:none}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px;
+  border-radius:50px;
+  text-decoration:none;
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>GÉNIE+ RDC</h1>
-  <p>Entreprise de Construction • Ingénierie • Matériaux</p>
+  <p>Dashboard Administrateur</p>
 </header>
 
-<nav>
-  <a href="#accueil">Accueil</a>
-  <a href="#apropos">À propos</a>
-  <a href="#services">Services</a>
-  <a href="#projets">Projets</a>
-  <a href="#contact">Contact</a>
-</nav>
+<div class="container">
 
-<section class="hero" id="accueil">
-  <h1>Bâtir un avenir solide en RDC</h1>
-  <p>Nous réalisons des projets de construction durables, modernes et économiques pour particuliers, entreprises et institutions.</p>
-  <a class="btn" href="#contact">Demander un devis</a>
-</section>
+<!-- ================= LOGIN ================= -->
+<div id="loginBox" class="card">
+  <h2>Connexion Admin</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Mot de passe">
+  <button onclick="login()">Se connecter</button>
+</div>
 
-<section class="section" id="apropos">
-  <h2>À propos de nous</h2>
-  <p>
-    <b>GÉNIE+ RDC</b> est une entreprise spécialisée dans la construction, le suivi des chantiers, 
-    la fourniture de matériaux et les études techniques.
-  </p>
-  <p>
-    Nous intervenons dans la conception, la réalisation et la supervision de projets de bâtiments résidentiels,
-    commerciaux et infrastructures en République Démocratique du Congo.
-  </p>
-</section>
+<!-- ================= ADMIN PANEL ================= -->
+<div id="adminPanel" class="hidden">
 
-<section class="section" id="services">
-  <h2>Nos Services</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Construction BTP</h3>
-      <p>Maisons, immeubles, écoles, bureaux et infrastructures modernes.</p>
-    </div>
-
-    <div class="card">
-      <h3>Études Techniques</h3>
-      <p>Plans architecturaux, calculs structurels et conception complète.</p>
-    </div>
-
-    <div class="card">
-      <h3>Matériaux de Construction</h3>
-      <p>Ciment, fers à béton, peinture, plomberie et électricité bâtiment.</p>
-    </div>
-
-    <div class="card">
-      <h3>Suivi de Chantier</h3>
-      <p>Supervision technique pour garantir qualité et durabilité des ouvrages.</p>
-    </div>
-
+  <div class="top">
+    <h2>Dashboard Projets</h2>
+    <button onclick="logout()">Déconnexion</button>
   </div>
-</section>
 
-<section class="section" id="projets">
-  <h2>Nos Réalisations</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Maison moderne</h3>
-      <p>Construction d’une maison familiale à Bukavu.</p>
-    </div>
-
-    <div class="card">
-      <h3>Bâtiment R+2</h3>
-      <p>Projet résidentiel en cours de réalisation.</p>
-    </div>
-
-    <div class="card">
-      <h3>Fourniture matériaux</h3>
-      <p>Distribution de matériaux sur plusieurs chantiers.</p>
-    </div>
-
+  <div class="card">
+    <h3>Ajouter un projet</h3>
+    <input id="title" placeholder="Titre du projet">
+    <textarea id="desc" placeholder="Description"></textarea>
+    <button onclick="addProject()">Publier</button>
   </div>
-</section>
 
-<section class="section" id="contact">
-  <h2>Contactez-nous</h2>
+  <div class="card">
+    <h3>Projets publiés</h3>
+    <div id="projects"></div>
+  </div>
 
-  <p><b>Téléphone :</b> +243 852 677 025</p>
-  <p><b>Email :</b> iroltab@gmail.com</p>
-  <p><b>Localisation :</b> République Démocratique du Congo</p>
+</div>
 
-  <br>
-
-  <a class="btn" href="https://wa.me/243852677025">Envoyer un message WhatsApp</a>
-</section>
-
-<footer>
-  © 2026 GÉNIE+ RDC - Tous droits réservés
-</footer>
+</div>
 
 <a class="whatsapp" href="https://wa.me/243852677025" target="_blank">WhatsApp</a>
+
+<script>
+
+/* ================= FIREBASE CONFIG ================= */
+const firebaseConfig = {
+  apiKey: "XXXX",
+  authDomain: "XXXX",
+  projectId: "XXXX"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+/* ================= LOGIN ================= */
+function login(){
+  auth.signInWithEmailAndPassword(
+    email.value,
+    password.value
+  )
+  .then(()=>{
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    loadProjects();
+  })
+  .catch(err=>alert(err.message));
+}
+
+/* ================= LOGOUT ================= */
+function logout(){
+  auth.signOut();
+  location.reload();
+}
+
+/* ================= ADD PROJECT ================= */
+function addProject(){
+  db.collection("projets").add({
+    title:title.value,
+    description:desc.value,
+    date:new Date()
+  });
+
+  title.value="";
+  desc.value="";
+}
+
+/* ================= LOAD PROJECTS ================= */
+function loadProjects(){
+  db.collection("projets").onSnapshot(snapshot=>{
+    let html="";
+    snapshot.forEach(doc=>{
+      html+=`
+        <div class="card">
+          <h3>${doc.data().title}</h3>
+          <p>${doc.data().description}</p>
+          <button onclick="deleteProject('${doc.id}')">Supprimer</button>
+        </div>
+      `;
+    });
+    document.getElementById("projects").innerHTML=html;
+  });
+}
+
+/* ================= DELETE ================= */
+function deleteProject(id){
+  db.collection("projets").doc(id).delete();
+}
+
+/* ================= AUTO CHECK LOGIN ================= */
+auth.onAuthStateChanged(user=>{
+  if(user){
+    loginBox.classList.add("hidden");
+    adminPanel.classList.remove("hidden");
+    loadProjects();
+  }
+});
+
+</script>
 
 </body>
 </html>
