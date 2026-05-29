@@ -1,226 +1,671 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GÉNIE+ RDC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GÉNIE+ RDC | Construction & Génie Civil</title>
+  <meta name="description" content="GÉNIE+ RDC est une entreprise premium de construction, génie civil et infrastructures modernes en RDC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-<style>
-body{margin:0;font-family:Arial;background:#f4f4f4}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:#fff;
+      color:#111;
+      overflow-x:hidden;
+    }
 
-/* NAV */
-nav{
-  background:#111;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-nav a{
-  color:#fff;
-  padding:12px;
-  text-decoration:none;
-}
+    ::selection{
+      background:#ff7a00;
+      color:white;
+    }
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:100px 20px;
-  background:#f5f5f5;
-}
-.hero h1{color:#ff6a00;font-size:45px}
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+      background:rgba(0,0,0,0.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
 
-.btn{
-  background:#ff6a00;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:8px;
-  text-decoration:none;
-  display:inline-block;
-  margin-top:15px;
-}
+    .container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+    }
 
-/* SECTION */
-.section{
-  max-width:1000px;
-  margin:auto;
-  padding:40px;
-}
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
 
-.card{
-  background:#fff;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
-}
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:white;
+      font-size:28px;
+      font-weight:800;
+    }
 
-/* ADMIN */
-.hidden{display:none}
+    .logo img{
+      width:60px;
+      height:60px;
+      object-fit:contain;
+      border-radius:50%;
+      background:white;
+      padding:4px;
+    }
 
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-}
+    .menu{
+      display:flex;
+      gap:35px;
+    }
 
-button{
-  background:#ff6a00;
-  color:#fff;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-</style>
+    .menu a{
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s;
+      position:relative;
+    }
+
+    .menu a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:#ff7a00;
+      transition:.3s;
+    }
+
+    .menu a:hover::after{
+      width:100%;
+    }
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+      url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      color:white;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:850px;
+    }
+
+    .hero h1{
+      font-size:72px;
+      line-height:1.1;
+      margin-bottom:25px;
+      font-weight:800;
+    }
+
+    .hero h1 span{
+      color:#ff7a00;
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#ddd;
+      margin-bottom:35px;
+      line-height:1.8;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 34px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .btn-primary{
+      background:#ff7a00;
+      color:white;
+      box-shadow:0 10px 30px rgba(255,122,0,.4);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+    }
+
+    .btn-secondary{
+      border:2px solid white;
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:white;
+      color:black;
+    }
+
+    section{
+      padding:120px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h2{
+      font-size:50px;
+      margin-bottom:15px;
+      font-weight:800;
+    }
+
+    .section-title p{
+      color:#777;
+      font-size:18px;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:60px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:25px;
+      box-shadow:0 20px 60px rgba(0,0,0,.15);
+    }
+
+    .about-content h3{
+      font-size:42px;
+      margin-bottom:25px;
+      font-weight:800;
+    }
+
+    .about-content p{
+      margin-bottom:22px;
+      color:#555;
+      line-height:1.9;
+      font-size:17px;
+    }
+
+    .services{
+      background:#0e0e0e;
+      color:white;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    .service-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:40px 30px;
+      border-radius:20px;
+      transition:.4s;
+      backdrop-filter:blur(10px);
+    }
+
+    .service-card:hover{
+      transform:translateY(-10px);
+      border-color:#ff7a00;
+      box-shadow:0 20px 40px rgba(255,122,0,.2);
+    }
+
+    .service-card h3{
+      margin-bottom:20px;
+      color:#ff7a00;
+      font-size:24px;
+    }
+
+    .service-card p{
+      color:#ccc;
+      line-height:1.8;
+    }
+
+    .stats{
+      background:linear-gradient(135deg,#ff7a00,#ff9f43);
+      color:white;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+      text-align:center;
+    }
+
+    .stat h3{
+      font-size:60px;
+      margin-bottom:10px;
+      font-weight:800;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      border-radius:22px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 20px 40px rgba(0,0,0,.1);
+      transition:.4s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
+
+    .project-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+      display:flex;
+      align-items:flex-end;
+      padding:30px;
+      color:white;
+    }
+
+    .project-overlay h3{
+      font-size:28px;
+      margin-bottom:12px;
+    }
+
+    .vision{
+      background:#f7f7f7;
+    }
+
+    .vision-box{
+      background:white;
+      padding:70px;
+      border-radius:30px;
+      box-shadow:0 20px 50px rgba(0,0,0,.08);
+      text-align:center;
+    }
+
+    .vision-box h2{
+      font-size:52px;
+      margin-bottom:25px;
+      color:#111;
+    }
+
+    .vision-box p{
+      font-size:22px;
+      line-height:2;
+      color:#555;
+      max-width:950px;
+      margin:auto;
+    }
+
+    .contact-section{
+      background:#0c0c0c;
+      color:white;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:60px;
+      align-items:start;
+    }
+
+    .contact-info h3{
+      font-size:42px;
+      margin-bottom:25px;
+      color:#ff7a00;
+    }
+
+    .contact-info p{
+      margin-bottom:18px;
+      color:#ddd;
+      line-height:1.8;
+      font-size:18px;
+    }
+
+    .contact-form{
+      background:rgba(255,255,255,0.05);
+      padding:40px;
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      padding:18px;
+      margin-bottom:20px;
+      border:none;
+      border-radius:12px;
+      background:rgba(255,255,255,.1);
+      color:white;
+      font-size:16px;
+    }
+
+    .contact-form textarea{
+      min-height:160px;
+      resize:vertical;
+    }
+
+    footer{
+      background:black;
+      color:#aaa;
+      padding:40px 0;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+
+    .whatsapp{
+      position:fixed;
+      right:25px;
+      bottom:25px;
+      width:70px;
+      height:70px;
+      background:#25D366;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:32px;
+      text-decoration:none;
+      color:white;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      z-index:999;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.08)}
+      100%{transform:scale(1)}
+    }
+
+    @media(max-width:900px){
+      .hero h1{
+        font-size:48px;
+      }
+
+      .section-title h2,
+      .vision-box h2,
+      .about-content h3,
+      .contact-info h3{
+        font-size:36px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .vision-box{
+        padding:40px 25px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- ================= NAV PUBLIC ================= -->
-<nav>
-  <a href="#home">Accueil</a>
-  <a href="#services">Services</a>
-  <a href="#projects">Projets</a>
-  <a href="#admin">Admin</a>
-</nav>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <img src="logo.jpeg" alt="Logo GÉNIE+ RDC">
+        GÉNIE+ RDC
+      </div>
 
-<!-- ================= PAGE ACCUEIL PUBLIC ================= -->
-<section class="hero" id="home">
-  <h1>GÉNIE+ RDC</h1>
-  <p>Construction • Ingénierie • Matériaux</p>
-  <a class="btn" href="#services">Découvrir</a>
+      <div class="menu">
+        <a href="#about">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Construire la <span>RDC Moderne</span> avec Excellence</h1>
+
+      <p>
+        GÉNIE+ RDC est une entreprise premium de construction et génie civil basée à Bukavu, spécialisée dans les infrastructures modernes, les bâtiments haut standing, les ouvrages communautaires et les solutions techniques innovantes.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+        <a href="#projects" class="btn btn-secondary">Voir nos projets</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="services">
-  <h2>Nos Services</h2>
-  <div class="card">Construction de bâtiments modernes</div>
-  <div class="card">Études techniques</div>
-  <div class="card">Fourniture matériaux</div>
+<section id="about">
+  <div class="container">
+    <div class="about">
+      <div>
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop" alt="Construction premium">
+      </div>
+
+      <div class="about-content">
+        <h3>Une Vision Internationale de la Construction</h3>
+
+        <p>
+          GÉNIE+ RDC développe des projets de construction et de génie civil selon des standards professionnels internationaux.
+        </p>
+
+        <p>
+          Notre expertise couvre les bâtiments modernes, les infrastructures communautaires, les ouvrages WASH, les études techniques, la supervision de chantier et la fourniture de matériaux de construction.
+        </p>
+
+        <p>
+          Nous combinons innovation, qualité, sécurité et excellence technique pour contribuer durablement au développement de la République Démocratique du Congo.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="projects">
-  <h2>Projets</h2>
-  <div id="projectList"></div>
+<section class="services" id="services">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Nos Services Premium</h2>
+      <p>Des solutions techniques complètes pour tous vos projets</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Construction Moderne</h3>
+        <p>Construction de maisons, immeubles, écoles, hôpitaux, bureaux et infrastructures haut standing.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Génie Civil</h3>
+        <p>Routes, ponts, dalots, ouvrages hydrauliques, fondations et structures en béton armé.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Études Techniques</h3>
+        <p>Plans architecturaux, calculs structurels, devis quantitatifs et supervision professionnelle.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Ouvrages WASH</h3>
+        <p>Construction de latrines, réseaux d’eau, réservoirs et infrastructures communautaires.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Rénovation & Réhabilitation</h3>
+        <p>Modernisation complète des bâtiments et infrastructures existantes.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Matériaux de Construction</h3>
+        <p>Fourniture de ciment, fers à béton, plomberie, peinture et équipements techniques.</p>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<!-- ================= ADMIN ================= -->
-<section class="section" id="admin">
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
 
-<h2>Administration</h2>
+      <div class="stat">
+        <h3>100+</h3>
+        <p>Clients satisfaits</p>
+      </div>
 
-<!-- LOGIN -->
-<div id="loginBox" class="card">
-  <h3>Connexion Admin</h3>
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Mot de passe">
-  <button onclick="login()">Se connecter</button>
-</div>
+      <div class="stat">
+        <h3>50+</h3>
+        <p>Projets réalisés</p>
+      </div>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="hidden">
+      <div class="stat">
+        <h3>10+</h3>
+        <p>Experts techniques</p>
+      </div>
 
-  <h3>Dashboard</h3>
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Support professionnel</p>
+      </div>
 
-  <input id="title" placeholder="Titre">
-  <textarea id="desc" placeholder="Description"></textarea>
-  <button onclick="addProject()">Publier</button>
-
-  <h3>Liste projets</h3>
-  <div id="adminList"></div>
-
-  <button onclick="logout()">Déconnexion</button>
-</div>
-
+    </div>
+  </div>
 </section>
 
-<script>
+<section id="projects">
+  <div class="container">
 
-/* ================= FIREBASE ================= */
-const firebaseConfig = {
-  apiKey: "TON_API_KEY",
-  authDomain: "TON_PROJECT.firebaseapp.com",
-  projectId: "TON_PROJECT_ID"
-};
+    <div class="section-title">
+      <h2>Réalisations</h2>
+      <p>Des projets modernes conçus avec excellence</p>
+    </div>
 
-firebase.initializeApp(firebaseConfig);
+    <div class="projects-grid">
 
-const auth = firebase.auth();
-const db = firebase.firestore();
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=1600&auto=format&fit=crop" alt="Projet résidentiel">
 
-/* ================= LOGIN ================= */
-function login(){
-  auth.signInWithEmailAndPassword(email.value, password.value)
-  .then(()=>{
-    showDashboard();
-  })
-  .catch(err=>{
-    alert("Erreur : " + err.message);
-  });
-}
-
-/* ================= LOGOUT ================= */
-function logout(){
-  auth.signOut();
-}
-
-/* ================= DASHBOARD ================= */
-function showDashboard(){
-  loginBox.classList.add("hidden");
-  dashboard.classList.remove("hidden");
-  loadAdmin();
-}
-
-/* ================= AUTO LOGIN ================= */
-auth.onAuthStateChanged(user=>{
-  if(user){
-    showDashboard();
-  }else{
-    loginBox.classList.remove("hidden");
-    dashboard.classList.add("hidden");
-  }
-});
-
-/* ================= ADD PROJECT ================= */
-function addProject(){
-  db.collection("projets").add({
-    title:title.value,
-    description:desc.value
-  });
-
-  title.value="";
-  desc.value="";
-}
-
-/* ================= LOAD PUBLIC + ADMIN ================= */
-function loadAdmin(){
-  db.collection("projets").onSnapshot(snapshot=>{
-    let html="";
-    snapshot.forEach(doc=>{
-      let p = doc.data();
-
-      html += `
-        <div class="card">
-          <h4>${p.title}</h4>
-          <p>${p.description}</p>
-          <button onclick="deleteProject('${doc.id}')">Supprimer</button>
+        <div class="project-overlay">
+          <div>
+            <h3>Résidences Modernes</h3>
+            <p>Construction de bâtiments résidentiels premium.</p>
+          </div>
         </div>
-      `;
-    });
+      </div>
 
-    adminList.innerHTML = html;
-    projectList.innerHTML = html;
-  });
-}
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" alt="Projet infrastructure">
 
-/* ================= DELETE ================= */
-function deleteProject(id){
-  db.collection("projets").doc(id).delete();
-}
+        <div class="project-overlay">
+          <div>
+            <h3>Infrastructures Communautaires</h3>
+            <p>Projets WASH et infrastructures publiques.</p>
+          </div>
+        </div>
+      </div>
 
-</script>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=1600&auto=format&fit=crop" alt="Projet génie civil">
+
+        <div class="project-overlay">
+          <div>
+            <h3>Travaux de Génie Civil</h3>
+            <p>Structures durables et ouvrages techniques.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="vision">
+  <div class="container">
+    <div class="vision-box">
+      <h2>Notre Vision</h2>
+
+      <p>
+        Faire de GÉNIE+ RDC une référence incontournable dans le secteur de la construction et du génie civil en République Démocratique du Congo et en Afrique centrale, grâce à des infrastructures modernes, durables et innovantes répondant aux standards internationaux.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <h3>Contactez-nous</h3>
+
+        <p><strong>Entreprise :</strong> GÉNIE+ RDC</p>
+        <p><strong>Ville :</strong> Bukavu, RDC</p>
+        <p><strong>Email :</strong> otambweb@gmail.com</p>
+        <p><strong>WhatsApp :</strong> +243852677025</p>
+
+        <p>
+          Nous accompagnons les particuliers, entreprises, ONG et institutions dans la réalisation de projets modernes et durables.
+        </p>
+      </div>
+
+      <div class="contact-form">
+        <input type="text" placeholder="Votre nom">
+        <input type="email" placeholder="Votre email">
+        <textarea placeholder="Décrivez votre projet..."></textarea>
+        <a href="https://wa.me/243852677025" class="btn btn-primary">Envoyer via WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 GÉNIE+ RDC — Construction • Génie Civil • Innovation</p>
+  </div>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/243852677025" target="_blank">💬</a>
 
 </body>
 </html>
